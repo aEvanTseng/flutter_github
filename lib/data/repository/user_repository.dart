@@ -18,9 +18,9 @@ class UserRepository {
 
         final users = (data as List<dynamic>).map((user) {
           return User(
-            avatarUrl: user["avatar_url"],
+            avatarUrl: user["avatar_url"] ?? '',
             login: user["login"],
-            siteAdmin: user["site_admin"],
+            siteAdmin: user["site_admin"] ?? true,
           );
         }).toList();
 

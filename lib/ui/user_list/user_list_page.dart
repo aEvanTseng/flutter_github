@@ -14,13 +14,12 @@ class UserListPage extends ConsumerWidget {
       data: (userList) {
         return Scaffold(
           body: SafeArea(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: const [
-                UserCard(),
-                UserCard(),
-                UserCard(),
-              ],
+            child: SingleChildScrollView(
+              child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: userList.users
+                      .map((user) => UserCard(user: user))
+                      .toList()),
             ),
           ),
         );

@@ -13,14 +13,23 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final GoRouter router = GoRouter(
-      initialLocation: '/user_list',
+      initialLocation: '/users',
       routes: <GoRoute>[
         GoRoute(
-          name: 'user_list',
-          path: '/user_list',
-          builder: (BuildContext context, GoRouterState state) =>
-              const UserListPage(),
-        )
+            name: 'users',
+            path: '/users',
+            builder: (BuildContext context, GoRouterState state) =>
+                const UserListPage(),
+            routes: [
+              GoRoute(
+                name: 'detail',
+                path: ':id',
+                builder: (BuildContext context, GoRouterState state) =>
+                    const Scaffold(
+                  body: Text('detail'),
+                ),
+              )
+            ])
       ],
     );
 

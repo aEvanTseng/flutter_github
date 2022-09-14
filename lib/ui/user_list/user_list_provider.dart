@@ -1,7 +1,6 @@
+import 'package:flutter_github/data/model/user.dart';
 import 'package:flutter_github/data/repository/user_repository.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../../data/model/user.dart';
-import '../../data/repository/user_repository.dart';
 
 class UserListProvider extends StateNotifier<AsyncValue<UserList>> {
   UserListProvider(this._userRepository) : super(const AsyncValue.loading()) {
