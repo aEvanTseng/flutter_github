@@ -33,7 +33,7 @@ class UserCard extends StatelessWidget {
                       child: Padding(
                         padding: EdgeInsets.all(2.0),
                         child: Text(
-                          'site_admin',
+                          'STAFF',
                           style: TextStyle(color: Colors.white, fontSize: 16),
                         ),
                       ),

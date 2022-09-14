@@ -16,16 +16,15 @@ class UserRepository {
       case 200:
         final data = json.decode(response.body);
 
-        return UserList(
-          amount: data.length,
-          users: data.map((user) {
-            return User(
-              avatarUrl: user["avatar_url"],
-              login: user["login"],
-              siteAdmin: user["site_admin"],
-            );
-          }).toList(),
-        );
+        final users = (data as List<dynamic>).map((user) {
+          return User(
+            avatarUrl: user["avatar_url"],
+            login: user["login"],
+            siteAdmin: user["site_admin"],
+          );
+        }).toList();
+
+        return UserList(amount: data.length, users: users);
       default:
         throw const AsyncValue.error('Some error occurred');
     }
