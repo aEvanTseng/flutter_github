@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_github/data/model/user.dart';
 
 class UserCard extends StatelessWidget {
-  const UserCard({Key? key}) : super(key: key);
+  const UserCard({Key? key, required this.user}) : super(key: key);
+
+  final User user;
 
   @override
   Widget build(BuildContext context) {
@@ -12,28 +15,27 @@ class UserCard extends StatelessWidget {
         padding: const EdgeInsets.all(10.0),
         child: Row(
           children: [
-            const CircleAvatar(
+            CircleAvatar(
               radius: 50,
               backgroundColor: Colors.teal,
-              backgroundImage: NetworkImage(
-                  'https://avatars.githubusercontent.com/u/43735695?v=4'),
+              backgroundImage: NetworkImage(user.avatarUrl),
             ),
             const SizedBox(width: 10),
             Padding(
               padding: const EdgeInsets.fromLTRB(10, 0, 0, 0),
               child: Column(
-                children: const [
+                children: [
                   Text(
-                    'Evan',
-                    style: TextStyle(fontSize: 16),
+                    user.login,
+                    style: const TextStyle(fontSize: 16),
                   ),
-                  if (true)
-                    Card(
+                  if (user.siteAdmin)
+                    const Card(
                       color: Colors.purple,
                       child: Padding(
                         padding: EdgeInsets.all(2.0),
                         child: Text(
-                          'site_admin',
+                          'STAFF',
                           style: TextStyle(color: Colors.white, fontSize: 16),
                         ),
                       ),
