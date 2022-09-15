@@ -14,21 +14,21 @@ class UserList {
 }
 
 class UserDetail {
-  final String? avatarUrl;
-  final String? name;
-  final String? bio;
-  final String? login;
-  final bool? siteAdmin;
-  final String? location;
-  final String? blog;
+  final String avatarUrl;
+  final String name;
+  final String bio;
+  final String login;
+  final bool siteAdmin;
+  final String location;
+  final String blog;
 
   UserDetail({
-    this.avatarUrl,
-    this.name,
-    this.bio,
-    this.login,
-    this.siteAdmin,
-    this.location,
-    this.blog,
+    required this.avatarUrl,
+    required this.name,
+    required this.bio,
+    required this.login,
+    required this.siteAdmin,
+    required this.location,
+    required this.blog,
   });
 }

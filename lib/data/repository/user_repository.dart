@@ -29,6 +29,29 @@ class UserRepository {
         throw const AsyncValue.error('Some error occurred');
     }
   }
+
+  Future<UserDetail> getUser(String name) async {
+    final response = await client.get(_buildUri(endpoint: "/users/$name"));
+
+    switch (response.statusCode) {
+      case 200:
+        final data = json.decode(response.body);
+
+        final userDetail = UserDetail(
+          avatarUrl: data["avatar_url"] ?? "",
+          name: data["name"],
+          bio: data["bio"] ?? "",
+          login: data["login"],
+          siteAdmin: data["siteAdmin"] ?? false,
+          location: data["location"] ?? "",
+          blog: data["blog"] ?? "",
+        );
+
+        return userDetail;
+      default:
+        throw const AsyncValue.error('Some error occurred');
+    }
+  }
 }
 
 Uri _buildUri({
